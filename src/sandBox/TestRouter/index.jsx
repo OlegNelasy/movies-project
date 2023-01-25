@@ -11,7 +11,7 @@ export default function TestRouter() {
     <>
       <div>Test Router</div>
       <div>
-        <Link to='/'>Home</Link> <Link to='/test'>TestPages</Link>  <Link to='/TestButton'>TestButton</Link>
+        <Link to='/'>Home</Link> <Link to='/test'>TestPages</Link> <Link to='/TestButton'>TestButton</Link>
       </div>
       <Routes>
         <Route path='/' element={<Home />} />
