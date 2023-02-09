@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       {/* <p>MOVIES PROJECT</p> */}
       <TestRouter />
-      {process.env.REACT_APP_API_Key}
+      {/* {process.env.REACT_APP_API_KEY} */}
     </div>
   );
 }
