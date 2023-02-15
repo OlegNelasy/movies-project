@@ -1,4 +1,4 @@
-import{useEffect} from 'react'
+import{useEffect, useState} from 'react'
 import axios from 'axios';
 
 
@@ -24,7 +24,7 @@ export const TestPages = () => {
     //     headers: {'Content-Type': 'application/json'}
     // }).then((responce) => { console.log(responce.data) })
 
-    
+    const [moviesList, setMoviesList] = useState([]);
 
     const instance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -33,19 +33,24 @@ export const TestPages = () => {
     });
 
 
-    const getMovi = async () => {
+    const getMovie = async () => {
         const data = await instance.get('/movie/now_playing');
-        console.log(data.data.results);
+        setMoviesList(data.data.results);
+        // console.log(data.data.results);
     }
 
     useEffect(() => {
-       getMovi();
-    });
+       getMovie();
+    }, []);
+
+    console.log(moviesList);
 
     return(
         <div>
             <p>Test page</p>
-            <p></p>
+            {/* {moviesList.map((movie) => (<p key={movie.id}>{movie.title}</p>))} */}
+            {moviesList.map((movie) => (<img key={movie.id} src={process.env.REACT_APP_API_IMG_URL + movie.poster_path}/>))};
+            {/* <p>{moviesList[2] && moviesList[2].title}</p> */}
         </div>
     );
 };
