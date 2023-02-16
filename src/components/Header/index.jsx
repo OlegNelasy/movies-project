@@ -1,23 +1,23 @@
 import React from 'react';
-import './style.scss';
+import logo from './../../img/empire.png'; //подключение изображения 
+import styles from './Header.module.scss';  // Подключение стилей
 
 export default function Header() {
   return (
-    <header className='style'>
-        <div>
-                <p>Movies</p>
-        </div>
-        <div>
-            <select name="user_profile_color_2" required="required">
-                <option value="">Выберите значение</option>
-                <option value="1">Синий</option>
-                <option value="2">Зеленый</option>
-                <option value="3">Желтый</option>
-                <option value="4">Красный</option>
-                <option value="5">Оранжевый</option>
-                <option value="6">Черный</option>    
-            </select>
-        </div>
+    <header className={styles.header}> {/*Как применять стили */}
+      <div className={styles.box}>
+        <img src={logo} alt="logo" />
+        <h1>Movies</h1> 
+      </div>
+      <div className={styles.boxSelect}>
+        <select required="required">
+          <option value="">My Account</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>  
+        </select>
+      </div>
     </header>
   )
 }
