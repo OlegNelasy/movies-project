@@ -1,11 +1,13 @@
-import React from 'react'
-import styles from './Main.module.scss';
+import styles from './Home.module.scss';
 
+import {NavLink} from 'react-router-dom'
 import{useEffect, useState} from 'react'
-import axios from 'axios'; 
+import axios from 'axios';
 
 
-export default function Main() {
+
+export const Home = () => {
+    
     const [moviesList, setMoviesList] = useState([]);
 
     const instance = axios.create({
@@ -18,16 +20,18 @@ export default function Main() {
     const getMovie = async () => {
         const data = await instance.get('movie/now_playing');
         setMoviesList(data.data.results);
-        // console.log(data.data.results);
+        console.log(data.data.results);
     }
 
     useEffect(() => {
-       getMovie();
+        getMovie();
     }, []);
-  
-    return (
+    
+    return(
+        
         <section className={styles.container}>
-            {moviesList.map((movie, i) => (<img className={styles.poster} key={movie.id} src={process.env.REACT_APP_API_IMG_URL + movie.poster_path}/>))}
+            {moviesList.map((movie, i) => (<NavLink to={'/Movie/' + movie.id} className={styles.poster} key={movie.id}><img src={process.env.REACT_APP_API_IMG_URL + movie.poster_path}/></NavLink>))}
         </section>
-    )
-}
+    );
+};
+

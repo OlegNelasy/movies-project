@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    border: 1px solid black;
+
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    
+    flex-flow: row wrap;
+    flex-shrink: 1;
+    justify-content: center;
+    
+    gap: 10px; 
+}
+
+// .poster {
+//     // max-width: 19%;
+//     // margin: 5px;
+// }

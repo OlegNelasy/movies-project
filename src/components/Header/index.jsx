@@ -1,13 +1,18 @@
 import React from 'react';
-import logo from './../../img/empire.png'; //подключение изображения 
 import styles from './Header.module.scss';  // Подключение стилей
+import logo from './../../img/empire.png'; //подключение изображения 
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
     <header className={styles.header}> {/*Как применять стили */}
       <div className={styles.box}>
-        <img src={logo} alt="logo" />
-        <h1>Movies</h1> 
+        <NavLink to='/' className={styles.box} >
+          <img className={styles.img} src={logo} alt="logo" />
+          <h1>Movies</h1>
+        </NavLink >
+        {/* <img src={logo} alt="logo" /> */}
+        {/* <h1>Movies</h1> */}
       </div>
       <div className={styles.boxSelect}>
         <select required="required">
