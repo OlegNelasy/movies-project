@@ -1,0 +1,34 @@
+$primary-color: rgba(255,255,255,1);
+$background-color: rgba(71,77,89,1);
+
+.header{
+    display: flex;
+    justify-content: space-between;
+
+    color: $primary-color;
+    background-color: $background-color; 
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.img {
+    max-width: 60px;
+    max-height: 60px;
+    margin: 10px 15px;
+}
+
+.boxSelect{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    // align-items: center;
+}
+
+.boxSelect > select {
+    margin: 15px;
+}
