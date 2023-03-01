@@ -1,14 +1,10 @@
 import './App.scss';
 
-import Header from './components/Header';
-// import Main from './components/Main';
-
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
-import { Home } from './components/pages/Home'
-// import { TestPages } from './components/pages/TestPages'
-import { NotFound } from './components/pages/NotFound'
-import { Movie } from './components/pages/Movie'
-import {Layout} from './components/Layout'
+import { Home } from './pages/Home/Home'
+import { NotFound } from './pages/NotFound/NotFound'
+import { Movie } from './pages/Movie/Movie'
+import { Layout } from './Layout'
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -27,7 +23,6 @@ export default function App() {
   return (
     <>
       <RouterProvider router={router} />
-      {/* <Main /> */}
     </>
   );
 }
