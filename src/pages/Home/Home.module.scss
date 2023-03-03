@@ -1,13 +1,39 @@
-.container {
-    display: flex;
-    border: 1px solid black;
+$background-color: rgba(242,243,245,1);
 
+.LatestReleses {
+    background-color: $background-color;
+    padding-left: 8.5vw;
+}
+
+.container {
+    padding: 15px 0;
+    display: flex;
     // flex-direction: row;
     // flex-wrap: wrap;
-    
     flex-flow: row wrap;
-    flex-shrink: 1;
     justify-content: center;
-    
-    gap: 10px; 
+    gap: 10px;
+
+    background-color: $background-color;
+    // border: 1px solid black;
+    // flex-shrink: 1;
+}
+
+.poster {
+    display: flex;
+    justify-content: center;
+    flex-basis: 20%;
+    // flex-grow: 1;
+
+    // border: 1px solid black;
+}
+
+.poster > img {
+    // border: 1px solid rgb(183, 27, 27);
+    max-width: 20vw; //от ширины экрана
+    border-radius: 20px;
+
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.6);
 }
