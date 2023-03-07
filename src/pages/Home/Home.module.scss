@@ -1,39 +1,42 @@
 $background-color: rgba(242,243,245,1);
+$tille-color: rgba(71,77,89,0.5);
+$shadow-color: rgba(0, 0, 0, 0.9);
 
-.LatestReleses {
-    background-color: $background-color;
-    padding-left: 8.5vw;
-}
 
-.container {
-    padding: 15px 0;
+.сontainer {
     display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: 10px;
-
+    flex-direction: column;
+    padding: 28px 10%;
     background-color: $background-color;
-    // border: 1px solid black;
-    // flex-shrink: 1;
-}
 
-.poster {
-    display: flex;
-    justify-content: center;
-    flex-basis: 20%;
-    // flex-grow: 1;
-
-    // border: 1px solid black;
-}
-
-.poster > img {
-    // border: 1px solid rgb(183, 27, 27);
-    max-width: 20vw; //от ширины экрана
-    border-radius: 20px;
-
-    -webkit-box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.6);
-    box-shadow: 5px 5px 5px -5px rgba(0, 0, 0, 0.6);
+    .title {
+        color: $tille-color;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 12px 0;
+    }
+    
+    .postersContainer {
+        display: flex;
+        // flex-direction: row;
+        // flex-wrap: wrap;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        // gap: 20px;
+        gap: 20px 10px;
+        
+        .poster {
+            display: flex;
+            justify-content: center;
+            // width: calc((100% - 60px)/4);
+            width: calc((100% - 40px)/5);
+            border-radius: 8px;
+            box-shadow: 5px 5px 5px -5px $shadow-color;
+             
+            img {
+                width: 100%;
+                border-radius: inherit;
+            }
+        }
+    }
 }
