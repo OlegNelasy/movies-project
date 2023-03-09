@@ -12,7 +12,6 @@ export const Home = () => {
       params: { page: 1 },
     });
     setMoviesList(data.data.results);
-    console.log(data.data.results);
   };
 
   useEffect(() => {
