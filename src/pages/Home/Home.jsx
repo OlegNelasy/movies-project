@@ -30,7 +30,11 @@ export const Home = () => {
               key={movie.id}
             >
               <img
-                src={process.env.REACT_APP_API_IMG_URL + movie.poster_path}
+                src={
+                  process.env.REACT_APP_API_IMG_URL +
+                  "/w342" +
+                  movie.poster_path
+                }
                 alt={movie.title}
               />
             </NavLink>

@@ -1,0 +1,126 @@
+$shadow-color: rgba(0, 0, 0, 0.9);
+
+.backgroundImg {
+    position: fixed;
+    top: 65px; // залазит под хедер надо будет узнать что с этим делать
+    left:  -15px;
+    // right: -10px;
+    // bottom: -5px;
+    width: calc(100% + 30px);
+    height: calc(100% - 45px); // связано с top
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+.сontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .ButtonContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 2% 15%;
+
+        .link {
+            &:visited, &:hover, &:link { //посещённая
+                color: inherit;
+                text-decoration: none;
+                color: rgba(179,178,188,1);
+                font-size: 25px;
+                font-weight: 200;
+            }
+            // &:link { //не посещённая
+            //     color: inherit;
+            // }
+            // &:visited{ //посещённая
+            //     color: red;
+            // }
+            // &:hover { //когда наведен курсор мыши
+            //     color: inherit;
+            // }
+            // &:focus { // выделенная табом
+            //     color: red;
+            // }
+            // &:active { //если на сылку нажали
+            //     color: red;
+            // }
+        }
+    }
+
+    .contentContainer {
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+        flex-direction: row;
+        margin: 3% 20%;
+
+        .poster {
+            display: flex;
+            justify-content: center;
+            width: 30%;
+            box-shadow: 5px 5px 5px -5px $shadow-color;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            justify-content: space-around;
+            width: 65%;
+            color: white;
+
+            .dataMovie {
+                display: flex;
+                flex-direction: column;
+                // align-items: center;\
+                // justify-content: space-evenly;
+                
+                .title{
+                    font-size: 30px;
+                    font-weight: 600;
+                    margin: 10px 0;
+                    color: rgb(225,229,232);
+                }
+    
+                .movieInfo {
+                    display: flex;
+                    flex-direction: row;
+                    color: rgb(186,202,218);
+                    font-size: 20px;
+                    font-weight: 600;
+    
+                    .movieInfoParagraf {
+                        border-right: 1px solid rgb(151, 151, 158);
+                        padding: 0 10px;
+                        
+                        &:first-child {
+                            padding: 0 10px 0 0;
+                        }
+                        &:last-child {
+                            border: none;
+                            padding: 0 0 0 10px;
+                        } 
+                    }   
+                } 
+            }
+
+            .overview {
+                border-top: 1px solid rgb(186,202,218);
+                border-bottom: 1px solid rgb(186,202,218);
+                padding: 20px 0;
+                color: rgb(186,202,218);
+            }
+        }
+    }
+}
+

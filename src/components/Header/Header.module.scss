@@ -4,6 +4,7 @@ $background-color: rgba(71,77,89,1);
 .header{
     display: flex;
     justify-content: space-between;
+    // position: relative;
 
     color: $primary-color;
     background-color: $background-color; 
