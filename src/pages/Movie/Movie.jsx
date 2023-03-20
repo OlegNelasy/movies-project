@@ -4,6 +4,11 @@ import { apiInstance } from "../../api/apiInstance";
 import { NavLink } from "react-router-dom";
 
 import styles from "./Movie.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleLeft,
+  faCircleRight,
+} from "@fortawesome/free-regular-svg-icons";
 
 export const Movie = () => {
   const { id } = useParams();
@@ -13,7 +18,6 @@ export const Movie = () => {
   const getMovie = async () => {
     const data = await apiInstance.get("/movie/" + id);
     setMovie(data.data);
-    //console.log(data);
   };
 
   useEffect(() => {
@@ -33,10 +37,12 @@ export const Movie = () => {
       />
       <div className={styles.ButtonContainer}>
         <NavLink className={styles.link}>
+          <FontAwesomeIcon icon={faCircleLeft} className={styles.linkArrow} />
           <p>Back to list</p>
         </NavLink>
         <NavLink className={styles.link}>
           <p>Next Movie</p>
+          <FontAwesomeIcon icon={faCircleRight} className={styles.linkArrow} />
         </NavLink>
       </div>
       <div className={styles.contentContainer}>
@@ -62,6 +68,9 @@ export const Movie = () => {
           </div>
           <p className={styles.overview}>{movie.overview}</p>
         </div>
+        <button className={styles.favoriteButton} name="favorite">
+          Add to favorite
+        </button>
       </div>
     </div>
   );
