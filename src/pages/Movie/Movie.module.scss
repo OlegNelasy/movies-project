@@ -1,13 +1,15 @@
-$shadow-color: rgba(0, 0, 0, 0.9);
+$black-90: rgba(0, 0, 0, 0.9);
+$button-color: rgba(179,178,188,1);
+$transparent: rgba(0,0,0,0);
+$title-color: rgb(225,229,232);
+$text-color: rgb(186,202,218);
 
 .backgroundImg {
     position: fixed;
-    top: 65px; // залазит под хедер надо будет узнать что с этим делать
+    top: 65px; 
     left:  -15px;
-    // right: -10px;
-    // bottom: -5px;
     width: calc(100% + 30px);
-    height: calc(100% - 45px); // связано с top
+    height: calc(100% - 45px); 
     pointer-events: none;
     z-index: -1;
     filter: blur(8px);
@@ -21,11 +23,10 @@ $shadow-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     flex-direction: column;
 
-    .ButtonContainer {
+    .buttonContainer {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        // padding: 2% 15%;
         margin: 2% 0;
 
         .link {
@@ -35,35 +36,10 @@ $shadow-color: rgba(0, 0, 0, 0.9);
             font-size: 30px;
             font-weight: 200;
             
-            &:visited, &:hover, &:link { //посещённая
-                // color: inherit;
+            &:visited, &:hover, &:link { 
                 text-decoration: none;
-                color: rgba(179,178,188,1);  
+                color: $button-color;  
             }
-            // &:link { //не посещённая
-            //     color: inherit;
-            // }
-            // &:visited{ //посещённая
-            //     color: red;
-            // }
-            // &:hover { //когда наведен курсор мыши
-            //     color: inherit;
-            // }
-            // &:focus { // выделенная табом
-            //     color: red;
-            // }
-            // &:active { //если на сылку нажали
-            //     color: red;
-            // }
-
-            // &:first-child {
-            //     color: red;
-            //     font-size: 100px;
-            // }
-
-            // &:last-child {
-            //     color: blue;
-            // }
 
             &Arrow {
                 margin: 0 50px;
@@ -74,17 +50,15 @@ $shadow-color: rgba(0, 0, 0, 0.9);
     .contentContainer {
         display: flex;
         justify-content: space-between;
-        // align-items: center;
         flex-direction: row;
         margin: 3% 20%;
-        // border: 1px solid wheat;
         position: relative;
 
         .poster {
             display: flex;
             justify-content: center;
             width: 30%;
-            box-shadow: 5px 5px 5px -5px $shadow-color;
+            box-shadow: 5px 5px 5px -5px $black-90;
 
             img {
                 width: 100%;
@@ -94,33 +68,29 @@ $shadow-color: rgba(0, 0, 0, 0.9);
         .content {
             display: flex;
             flex-direction: column;
-            // align-items: center;
             justify-content: space-around;
             width: 65%;
-            color: white;
 
             .dataMovie {
                 display: flex;
                 flex-direction: column;
-                // align-items: center;\
-                // justify-content: space-evenly;
                 
                 .title{
                     font-size: 30px;
                     font-weight: 600;
                     margin: 10px 0;
-                    color: rgb(225,229,232);
+                    color: $title-color;
                 }
     
                 .movieInfo {
                     display: flex;
                     flex-direction: row;
-                    color: rgb(186,202,218);
+                    color: $text-color;
                     font-size: 20px;
                     font-weight: 600;
     
                     .movieInfoParagraf {
-                        border-right: 1px solid rgb(151, 151, 158);
+                        border-right: 1px solid $text-color;
                         padding: 0 10px;
                         
                         &:first-child {
@@ -135,10 +105,10 @@ $shadow-color: rgba(0, 0, 0, 0.9);
             }
 
             .overview {
-                border-top: 1px solid rgb(186,202,218);
-                border-bottom: 1px solid rgb(186,202,218);
+                border-top: 1px solid $text-color;
+                border-bottom: 1px solid $text-color;
                 padding: 20px 0;
-                color: rgb(186,202,218);
+                color: $text-color;
             }
         }
 
@@ -146,16 +116,12 @@ $shadow-color: rgba(0, 0, 0, 0.9);
             position: absolute;
             top: 0;
             right: 0;        
-            background-color: rgba(0,0,0,0);
-            // display: flex;
-            // flex-direction: row;
-            // justify-content: center;
-            // align-items: center;
+            background-color: $transparent;
             text-decoration: none;
-            color: rgba(179,178,188,1);
+            color: $button-color;
             font-size: 15px;
             font-weight: 200; 
-            border: 2px solid rgba(179,178,188,1);
+            border: 2px solid $button-color;
             border-radius: 5px;
             padding: 5px;
         }

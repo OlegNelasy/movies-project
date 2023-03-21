@@ -35,12 +35,12 @@ export const Movie = () => {
         }
         alt={movie.title}
       />
-      <div className={styles.ButtonContainer}>
-        <NavLink className={styles.link}>
+      <div className={styles.buttonContainer}>
+        <NavLink className={styles.link} to={"/"}>
           <FontAwesomeIcon icon={faCircleLeft} className={styles.linkArrow} />
           <p>Back to list</p>
         </NavLink>
-        <NavLink className={styles.link}>
+        <NavLink className={styles.link} /*to={"/Movie/" + (movie.id + 1)}*/>
           <p>Next Movie</p>
           <FontAwesomeIcon icon={faCircleRight} className={styles.linkArrow} />
         </NavLink>
