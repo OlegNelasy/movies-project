@@ -1,0 +1,130 @@
+$black-90: rgba(0, 0, 0, 0.9);
+$button-color: rgba(179,178,188,1);
+$transparent: rgba(0,0,0,0);
+$title-color: rgb(225,229,232);
+$text-color: rgb(186,202,218);
+
+.backgroundImg {
+    position: fixed;
+    top: 65px; 
+    left:  -15px;
+    width: calc(100% + 30px);
+    height: calc(100% - 45px); 
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+.сontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .buttonContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 2% 0;
+
+        .link {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 200;
+            
+            &:visited, &:hover, &:link { 
+                text-decoration: none;
+                color: $button-color;  
+            }
+
+            &Arrow {
+                margin: 0 50px;
+            }
+        }
+    }
+
+    .contentContainer {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        margin: 3% 20%;
+        position: relative;
+
+        .poster {
+            display: flex;
+            justify-content: center;
+            width: 30%;
+            box-shadow: 5px 5px 5px -5px $black-90;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 65%;
+
+            .dataMovie {
+                display: flex;
+                flex-direction: column;
+                
+                .title{
+                    font-size: 30px;
+                    font-weight: 600;
+                    margin: 10px 0;
+                    color: $title-color;
+                }
+    
+                .movieInfo {
+                    display: flex;
+                    flex-direction: row;
+                    color: $text-color;
+                    font-size: 20px;
+                    font-weight: 600;
+    
+                    .movieInfoParagraf {
+                        border-right: 1px solid $text-color;
+                        padding: 0 10px;
+                        
+                        &:first-child {
+                            padding: 0 10px 0 0;
+                        }
+                        &:last-child {
+                            border: none;
+                            padding: 0 0 0 10px;
+                        } 
+                    }   
+                } 
+            }
+
+            .overview {
+                border-top: 1px solid $text-color;
+                border-bottom: 1px solid $text-color;
+                padding: 20px 0;
+                color: $text-color;
+            }
+        }
+
+        .favoriteButton {
+            position: absolute;
+            top: 0;
+            right: 0;        
+            background-color: $transparent;
+            text-decoration: none;
+            color: $button-color;
+            font-size: 15px;
+            font-weight: 200; 
+            border: 2px solid $button-color;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    }
+}
+
