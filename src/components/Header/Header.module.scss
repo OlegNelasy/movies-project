@@ -1,35 +1,52 @@
 $primary-color: rgba(255,255,255,1);
 $background-color: rgba(71,77,89,1);
+$button-color: rgba(179,178,188,1);
 
 .header{
     display: flex;
-    justify-content: space-between;
-    // position: relative;
-
+    justify-content: center;
     color: $primary-color;
     background-color: $background-color; 
+
+    .сontainer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 150px;
+
+        .box{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            text-decoration: none;
+            color: $primary-color;
+            height: 80px;
+            padding: 10px 0;
+
+            .img {
+                height: 100%;
+                margin-right: 10px;
+            }
+            .movies {
+                font-weight: 600;
+            }
+        }
+        .boxButton{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            
+            .button {
+                border-radius: 3px;
+                border: 1px solid $button-color;
+                background-color: $background-color;
+                color: $button-color;
+                padding: 5px;
+            }
+        } 
+    }
 }
 
-.box{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-}
 
-.img {
-    max-width: 60px;
-    max-height: 60px;
-    margin: 10px 15px;
-}
-
-.boxSelect{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    // align-items: center;
-}
-
-.boxSelect > select {
-    margin: 15px;
-}
