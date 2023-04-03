@@ -1,22 +1,31 @@
 import styles from "./Home.module.scss";
 
+import { Pagination } from "@mui/material";
+
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/apiInstance";
 
 export const Home = () => {
+  const [totalPages, setTotalPages] = useState(0);
   const [moviesList, setMoviesList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const getMovie = async () => {
+  const getMovies = async (page) => {
     const data = await apiInstance.get("movie/now_playing", {
-      params: { page: 1 },
+      params: { page },
     });
     setMoviesList(data.data.results);
+    setTotalPages(data.data.total_pages);
+  };
+
+  const handlePageChange = (_, page) => {
+    setCurrentPage(page);
   };
 
   useEffect(() => {
-    getMovie();
-  }, []);
+    getMovies(currentPage);
+  }, [currentPage]);
 
   return (
     <section>
@@ -40,6 +49,16 @@ export const Home = () => {
             </NavLink>
           ))}
         </div>
+        <Pagination
+          className={styles.pagination}
+          count={totalPages}
+          variant="outlined"
+          shape="rounded"
+          page={currentPage}
+          onChange={handlePageChange}
+          showFirstButton
+          showLastButton
+        />
       </div>
     </section>
   );
