@@ -37,4 +37,10 @@ $number-of-posters-in-line: 5;
             }
         }
     }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+    }
 }
