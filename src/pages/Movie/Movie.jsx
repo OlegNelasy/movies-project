@@ -9,7 +9,7 @@ import {
   faCircleLeft,
   faCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
-import { Cancel } from "@mui/icons-material";
+// import { Cancel } from "@mui/icons-material";
 
 export const Movie = () => {
   const { id } = useParams();
@@ -22,58 +22,47 @@ export const Movie = () => {
     setMovie(data.data);
   };
 
-  // const qwe = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-  // console.log("qwe --->", qwe);
-
-  // if (movie) {
-  //   const qqq = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-  //   if (qqq.some((favoriteMovies) => favoriteMovies.id === movie.id)) {
-  //     setStateFavorite(true);
-  //   }
-  // }
+  if (movie) {
+    const buffer = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    if (
+      buffer.some((favoriteMovies) => favoriteMovies.id === movie.id) &&
+      !stateFavorite
+    ) {
+      setStateFavorite(true);
+    }
+  }
 
   const addToFavorites = () => {
-    const qwe = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    // console.log("qwe --->", qwe);
-    if (qwe) {
-      if (!qwe.some((favoriteMovies) => favoriteMovies.id === movie.id)) {
-        localStorage.setItem("favoriteMovies", JSON.stringify([...qwe, movie]));
-        setStateFavorite(true);
-      }
-    }
-    // const test = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    // console.log("set --->", test);
+    const setBuffer = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    // if (qwe) {
+    //   if (!qwe.some((favoriteMovies) => favoriteMovies.id === movie.id)) {
+    localStorage.setItem(
+      "favoriteMovies",
+      JSON.stringify([...setBuffer, movie])
+    );
+    setStateFavorite(true);
+    //   }
+    // }
   };
 
   const removeFromFavorites = () => {
-    const qwe = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    console.log("qwe --->", qwe);
-    if (qwe) {
-      const qwe1 = qwe.filter((favoriteMovies) => favoriteMovies !== movie);
-      // const qwe1 = qwe.slice(0, -1);
-      console.log("filter dell--->", qwe1);
-      localStorage.setItem("favoriteMovies", JSON.stringify(qwe1));
-
-      // if (qwe.some((favoriteMovies) => favoriteMovies.id === movie.id)) {
-      //   // localStorage.removeItem("favoriteMovies", movie);
-      //   setStateFavorite(false);
-      // }
-      setStateFavorite(false);
-    }
-    const test = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    console.log("set dell --->", test);
+    const removeBuffer =
+      JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    // if (removeBuffer) {
+    const modifiedRemoveBuffer = removeBuffer.filter(
+      (favoriteMovies) => favoriteMovies.id !== movie.id
+    );
+    localStorage.setItem(
+      "favoriteMovies",
+      JSON.stringify(modifiedRemoveBuffer)
+    );
+    setStateFavorite(false);
+    // }
   };
-
-  // if (movie) {
-  //   console.log("test id --->", movie.id);
-  //   const isFavorite = qwe.some(
-  //     (favoriteMovies) => favoriteMovies.id === movie.id
-  //   );
-  // }
 
   useEffect(() => {
     getMovie();
-  }, []);
+  });
 
   if (!movie) return <p>Loading...</p>;
 
