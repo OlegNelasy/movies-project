@@ -20,6 +20,10 @@ export const Movie = () => {
     setMovie(data.data);
   };
 
+  const addlocalStorage = (id) => {
+    localStorage.setItem("id", id);
+  };
+
   useEffect(() => {
     getMovie();
   }, []);
@@ -68,7 +72,11 @@ export const Movie = () => {
           </div>
           <p className={styles.overview}>{movie.overview}</p>
         </div>
-        <button className={styles.favoriteButton} name="favorite">
+        <button
+          className={styles.favoriteButton}
+          name="favorite"
+          onClick={addlocalStorage(movie.id)}
+        >
           Add to favorite
         </button>
       </div>
