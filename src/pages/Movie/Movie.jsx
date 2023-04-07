@@ -3,66 +3,63 @@ import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/apiInstance";
 import { NavLink } from "react-router-dom";
 
+import { FAVORITE_MOVIES } from "../../constants/constants.js";
 import styles from "./Movie.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleLeft,
   faCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
-// import { Cancel } from "@mui/icons-material";
 
 export const Movie = () => {
   const { id } = useParams();
 
   const [movie, setMovie] = useState(null);
-  const [stateFavorite, setStateFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const getMovie = async () => {
     const data = await apiInstance.get("/movie/" + id);
     setMovie(data.data);
   };
 
-  if (movie) {
-    const buffer = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    if (
-      buffer.some((favoriteMovies) => favoriteMovies.id === movie.id) &&
-      !stateFavorite
-    ) {
-      setStateFavorite(true);
-    }
-  }
-
   const addToFavorites = () => {
-    const setBuffer = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    // if (qwe) {
-    //   if (!qwe.some((favoriteMovies) => favoriteMovies.id === movie.id)) {
+    const favoriteMovies =
+      JSON.parse(localStorage.getItem(FAVORITE_MOVIES)) || [];
     localStorage.setItem(
-      "favoriteMovies",
-      JSON.stringify([...setBuffer, movie])
+      FAVORITE_MOVIES,
+      JSON.stringify([...favoriteMovies, movie])
     );
-    setStateFavorite(true);
-    //   }
-    // }
+    setIsFavorite(true);
   };
 
   const removeFromFavorites = () => {
-    const removeBuffer =
-      JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    // if (removeBuffer) {
-    const modifiedRemoveBuffer = removeBuffer.filter(
-      (favoriteMovies) => favoriteMovies.id !== movie.id
+    const favoriteMovies =
+      JSON.parse(localStorage.getItem(FAVORITE_MOVIES)) || [];
+    const filteredFavoriteMovies = favoriteMovies.filter(
+      (favoriteMovie) => favoriteMovie.id !== movie.id
     );
     localStorage.setItem(
-      "favoriteMovies",
-      JSON.stringify(modifiedRemoveBuffer)
+      FAVORITE_MOVIES,
+      JSON.stringify(filteredFavoriteMovies)
     );
-    setStateFavorite(false);
-    // }
+    setIsFavorite(false);
   };
 
   useEffect(() => {
     getMovie();
-  });
+  }, []);
+
+  useEffect(() => {
+    if (movie) {
+      const favoriteMovies =
+        JSON.parse(localStorage.getItem(FAVORITE_MOVIES)) || [];
+      if (
+        favoriteMovies.some((favoriteMovie) => favoriteMovie.id === movie.id)
+      ) {
+        setIsFavorite(true);
+      }
+    }
+  }, [movie]);
 
   if (!movie) return <p>Loading...</p>;
 
@@ -80,7 +77,7 @@ export const Movie = () => {
           <FontAwesomeIcon icon={faCircleLeft} className={styles.linkArrow} />
           <p>Back to list</p>
         </NavLink>
-        <NavLink className={styles.link} /*to={"/Movie/" + (movie.id + 1)}*/>
+        <NavLink className={styles.link}>
           <p>Next Movie</p>
           <FontAwesomeIcon icon={faCircleRight} className={styles.linkArrow} />
         </NavLink>
@@ -111,9 +108,9 @@ export const Movie = () => {
         <button
           className={styles.favoriteButton}
           name="favorite"
-          onClick={stateFavorite ? removeFromFavorites : addToFavorites}
+          onClick={isFavorite ? removeFromFavorites : addToFavorites}
         >
-          {stateFavorite ? "remove from" : "Add to"} favorite
+          {isFavorite ? "Remove from" : "Add to"} favorite
         </button>
       </div>
     </div>
