@@ -10,12 +10,16 @@ export const Favorites = () => {
 
   const favoriteMovies =
     JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-  //   console.log(favoriteMovies);
+  // console.log(favoriteMovies);
 
   const totalPages = Math.ceil(favoriteMovies.length / moviesPerPage);
 
   const handlePageChange = (_, page) => {
     setCurrentPage(page);
+  };
+
+  const firstMovieOnPage = (currentPage, moviesPerPage) => {
+    return (currentPage - 1) * moviesPerPage;
   };
 
   //   console.log("currentPage = ", currentPage);
@@ -30,8 +34,11 @@ export const Favorites = () => {
         </p>
         <div className={styles.postersContainer}>
           {favoriteMovies.map((movie, index) =>
-            index >= (currentPage - 1) * moviesPerPage &&
-            index < (currentPage - 1) * moviesPerPage + moviesPerPage ? (
+            index >= firstMovieOnPage(currentPage, moviesPerPage) &&
+            index <
+              firstMovieOnPage(currentPage, moviesPerPage) + moviesPerPage ? (
+              // index >= (currentPage - 1) * moviesPerPage &&
+              // index < (currentPage - 1) * moviesPerPage + moviesPerPage ? (
               <NavLink
                 to={"/Movie/" + movie.id}
                 className={styles.poster}
