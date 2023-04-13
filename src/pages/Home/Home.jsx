@@ -29,7 +29,7 @@ export const Home = () => {
 
   return (
     <section>
-      <div className={styles.сontainer}>
+      <div className={styles.container}>
         <p className={styles.title}>Latest Releases</p>
         <div className={styles.postersContainer}>
           {moviesList.map((movie) => (

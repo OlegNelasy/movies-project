@@ -1,71 +1,45 @@
-import styles from "./Favorites.module.scss";
-import { NavLink } from "react-router-dom";
-import { Pagination } from "@mui/material";
+import FavoriteMovie from "./FavoriteMovie";
 import { useEffect, useState } from "react";
+import { FAVORITE_MOVIES } from "../../constants/constants.js";
+
+import styles from "./Favorites.module.scss";
 
 export const Favorites = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-  const moviesPerPage = 20;
-
-  const favoriteMovies =
-    JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-  // console.log(favoriteMovies);
-
-  const totalPages = Math.ceil(favoriteMovies.length / moviesPerPage);
-
-  const handlePageChange = (_, page) => {
-    setCurrentPage(page);
+  const getFavoriteMovies = async () => {
+    const data = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    setFavoriteMovies(data);
   };
 
-  const firstMovieOnPage = (currentPage, moviesPerPage) => {
-    return (currentPage - 1) * moviesPerPage;
+  const handleDeleteFavoriteMovie = (id) => {
+    const filteredFavoriteMovies = favoriteMovies.filter(
+      (favoriteMovie) => favoriteMovie.id !== id
+    );
+    localStorage.setItem(
+      FAVORITE_MOVIES,
+      JSON.stringify(filteredFavoriteMovies)
+    );
+    setFavoriteMovies(filteredFavoriteMovies);
   };
 
-  //   console.log("currentPage = ", currentPage);
+  useEffect(() => {
+    getFavoriteMovies();
+  }, []);
 
   return (
     <>
       <div className={styles.сontainer}>
         <p className={styles.title}>
           {favoriteMovies.length
-            ? "Favorite Films"
+            ? "My favorite"
             : "You Don't Have Favorite Movies"}
         </p>
-        <div className={styles.postersContainer}>
-          {favoriteMovies.map((movie, index) =>
-            index >= firstMovieOnPage(currentPage, moviesPerPage) &&
-            index <
-              firstMovieOnPage(currentPage, moviesPerPage) + moviesPerPage ? (
-              // index >= (currentPage - 1) * moviesPerPage &&
-              // index < (currentPage - 1) * moviesPerPage + moviesPerPage ? (
-              <NavLink
-                to={"/Movie/" + movie.id}
-                className={styles.poster}
-                key={movie.id}
-              >
-                <img
-                  src={
-                    process.env.REACT_APP_API_IMG_URL +
-                    "/w342" +
-                    movie.poster_path
-                  }
-                  alt={movie.title}
-                />
-              </NavLink>
-            ) : null
-          )}
+        <div className={styles.favoriteItemContainer}>
+          {favoriteMovies.map((movie) => (
+            <FavoriteMovie movie={movie} onDelete={handleDeleteFavoriteMovie} />
+          ))}
         </div>
-        <Pagination
-          className={styles.pagination}
-          count={totalPages}
-          variant="outlined"
-          shape="rounded"
-          page={currentPage}
-          onChange={handlePageChange}
-          showFirstButton
-          showLastButton
-        />
       </div>
     </>
   );
