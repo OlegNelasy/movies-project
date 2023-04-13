@@ -31,7 +31,7 @@ export default function FavoriteMovie(props) {
         </div>
       </NavLink>
       <button
-        className={styles.unFavoriteButton}
+        className={styles.unfavoriteButton}
         name="Unfavorite"
         onClick={handleDelete}
       >
