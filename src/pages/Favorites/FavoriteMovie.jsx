@@ -11,7 +11,7 @@ export default function FavoriteMovie(props) {
   };
 
   return (
-    <div className={styles.favoriteContainer}>
+    <div className={styles.favoriteItemContainer}>
       <NavLink
         className={styles.favoriteLinkContainer}
         to={"/Movie/" + movie.id}
@@ -31,7 +31,7 @@ export default function FavoriteMovie(props) {
         </div>
       </NavLink>
       <button
-        className={styles.unfavoriteButton}
+        className={styles.unFavoriteButton}
         name="Unfavorite"
         onClick={handleDelete}
       >

@@ -8,7 +8,7 @@ export const Favorites = () => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   const getFavoriteMovies = async () => {
-    const data = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    const data = JSON.parse(localStorage.getItem(FAVORITE_MOVIES)) || [];
     setFavoriteMovies(data);
   };
 
@@ -35,7 +35,7 @@ export const Favorites = () => {
             ? "My favorite"
             : "You Don't Have Favorite Movies"}
         </p>
-        <div className={styles.favoriteItemContainer}>
+        <div className={styles.favoriteContainer}>
           {favoriteMovies.map((movie) => (
             <FavoriteMovie movie={movie} onDelete={handleDeleteFavoriteMovie} />
           ))}

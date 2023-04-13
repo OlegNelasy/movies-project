@@ -15,7 +15,7 @@ $darck-color: rgba(71,77,89,1);
         padding: 12px 0;
     }
 
-    .favoriteItemContainer {
+    .favoriteContainer {
         display: flex;
         flex-flow: row wrap; 
         flex-direction: column;
@@ -23,7 +23,7 @@ $darck-color: rgba(71,77,89,1);
         gap: 25px;
         width: 100%;
 
-        .favoriteContainer {
+        .favoriteItemContainer {
             position: relative;
 
             .favoriteLinkContainer{
@@ -63,7 +63,7 @@ $darck-color: rgba(71,77,89,1);
                 }
             }
             
-            .unfavoriteButton {
+            .unFavoriteButton {
                 position: absolute;
                 top: 0;
                 right: 0;        
