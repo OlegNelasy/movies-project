@@ -11,11 +11,6 @@ export default function Header() {
           <img className={styles.img} src={logo} alt="logo" />
           <h1 className={styles.movies}>Movies</h1>
         </NavLink>
-        {/* <div className={styles.boxButton}>
-          <button className={styles.button} name="myAccount">
-            My Account
-          </button>
-        </div> */}
         <NavLink to="/Favorites" className={styles.boxButton}>
           <p className={styles.button}>Favorites</p>
         </NavLink>

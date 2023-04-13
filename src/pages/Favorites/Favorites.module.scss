@@ -1,6 +1,6 @@
 $background-color: rgba(242,243,245,1);
 $title-color: rgba(71,77,89,0.5);
-$darck-color: rgba(71,77,89,1);
+$dark-color: rgba(71,77,89,1);
 
 .сontainer {
     display: flex;
@@ -50,14 +50,14 @@ $darck-color: rgba(71,77,89,1);
 
                     .movieTitle {
                         font-weight: 700;
-                        color: $darck-color;
+                        color: $dark-color;
                         font-size: 40px;
                     }
 
                     .movieOverview {
                         margin-top: 50px;
                         font-weight: 400;
-                        color: $darck-color;
+                        color: $dark-color;
                         font-size: 30px;
                     }
                 }
@@ -68,7 +68,7 @@ $darck-color: rgba(71,77,89,1);
                 top: 0;
                 right: 0;        
                 text-decoration: none;
-                color: $darck-color;
+                color: $dark-color;
                 font-size: 40px;
                 font-weight: 400; 
                 border: 2px solid $dark-color;

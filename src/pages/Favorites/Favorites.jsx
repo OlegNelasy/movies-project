@@ -7,11 +7,6 @@ import styles from "./Favorites.module.scss";
 export const Favorites = () => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-  const getFavoriteMovies = async () => {
-    const data = JSON.parse(localStorage.getItem(FAVORITE_MOVIES)) || [];
-    setFavoriteMovies(data);
-  };
-
   const handleDeleteFavoriteMovie = (id) => {
     const filteredFavoriteMovies = favoriteMovies.filter(
       (favoriteMovie) => favoriteMovie.id !== id
@@ -24,7 +19,8 @@ export const Favorites = () => {
   };
 
   useEffect(() => {
-    getFavoriteMovies();
+    const data = JSON.parse(localStorage.getItem(FAVORITE_MOVIES)) || [];
+    setFavoriteMovies(data);
   }, []);
 
   return (
